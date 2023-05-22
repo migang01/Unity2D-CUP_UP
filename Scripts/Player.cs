@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     private bool isMoving = false;
     // for Start Canvas
     private bool firstTouched = false;
-    // knockback
+    // knockdwon
     private bool knocdown = false;
 
     // touch to move
@@ -132,7 +132,7 @@ public class Player : MonoBehaviour
 
 
 
-        // idle animation starts during knockback -> because I used "SetTrigger"
+        // idle animation starts during knockdown -> because I used "SetTrigger"
         if (currentEnergy == 0)
         {
             knocdown = true;
@@ -143,11 +143,11 @@ public class Player : MonoBehaviour
         {
             if (!playOntime)
             {
-                Audio.knockbackSoundPlay();
+                Audio.knockdownSoundPlay();
                 playOntime = true;
             }
             
-            anim.SetBool("knockback", true);
+            anim.SetBool("knockdown", true);
 
             if (timer > maxTime * 2f)
             {
@@ -157,7 +157,7 @@ public class Player : MonoBehaviour
         }
         if (!knocdown)
         {
-            anim.SetBool("knockback", false);
+            anim.SetBool("knockdown", false);
         }
         
         
@@ -263,7 +263,7 @@ public class Player : MonoBehaviour
         }
 
 
-        if (collision.gameObject.tag == "Knockback" && !knocdown)
+        if (collision.gameObject.tag == "Knockdown" && !knocdown)
         {
             playOntime = false;
             currentEnergy = 0;
