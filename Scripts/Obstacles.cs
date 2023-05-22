@@ -24,6 +24,7 @@ public class Obstacles : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // point of contact information between colliding objects, 0 means first point
         if(collision.transform.tag == "Player")
         {
             ContactPoint2D contact = collision.contacts[0];
